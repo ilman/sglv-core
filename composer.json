@@ -1,0 +1,40 @@
+{
+    "name": "scienceguard/sglv-core",
+    "description": "",
+    "authors": [
+        {
+            "name": "M. Ilman Maulana",
+            "email": "ilman.maulana@gmail.com"
+        }
+    ],
+    "repositories": [{
+        "type":"vcs",
+        "url":"https://github.com/ilman/laravel4-monosql.git"
+    },
+    {
+        "type":"vcs",
+        "url":"https://github.com/ilman/sg_form.git"
+    },
+    {
+        "type":"vcs",
+        "url":"https://github.com/ilman/sg_util.git"
+    }],
+    "require": {
+        "php": ">=5.4.0",
+        "illuminate/support": "4.2.*",
+        "scienceguard/sg_util": "*@dev",
+        "scienceguard/sg_form": "*@dev",
+        "scienceguard/monosql": "*@dev"
+    },
+    "autoload": {
+        "classmap": [
+            "src/migrations",
+            "src/controllers",
+            "src/models"
+        ],
+        "psr-0": {
+            "Scienceguard\\SglvCore\\": "src/"
+        }
+    },
+    "minimum-stability": "stable"
+}
