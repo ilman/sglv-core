@@ -1,6 +1,6 @@
 <?php 
 
 return array (
-  'template_path' => basepath('workbench'),
+  'template_path' => base_path('workbench'),
   'template_url' => '@',
 );
