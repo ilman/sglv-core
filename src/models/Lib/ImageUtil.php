@@ -26,15 +26,25 @@ class ImageUtil{
 		$qref = (isset($qref)) ? $qref : true;
 		$qref = ($qref) ? '?ref='.$flag : '';
 
+<<<<<<< HEAD
 		$cdn_enabled = \Config::get('sglv-core::image.cdn_enabled');
 		$cdn_container = \Config::get('sglv-core::image.cdn_container');
 
 		$path = (isset($path)) ? $path : '';
 		$default_path = 'assets/images/defaults';
+=======
+		$use_cdn = Config::get('quizapp::config.use_cdn');
+		$cdn_container = Config::get('quizapp::config.cdn_container');
+
+		$path = (isset($path)) ? $path : '';
+		// $path = ($use_cdn) ? $path : UPLOAD_FOLDER.'/'.$path;
+		$default_path = DEFAULT_IMAGE_FOLDER;
+>>>>>>> 37ebd0ed8abd14921d39b5894f5d6f2812e5cff9
 
 		if(!$image){
 			$path = $default_path;
 			$image = $default_image;
+<<<<<<< HEAD
 			$image = SglvCoreUtil::fileSuffix($image, $size, $path);
 			$file_url = asset($image.$qref);
 		}
@@ -49,11 +59,28 @@ class ImageUtil{
 
 		// if(ping_remote_file($file_url) !== true){
 		// 	$file_url = SglvCoreUtil::fileSuffix($default_image, 'not_found_'.$size, $default_path);
+=======
+			$image = self::fileSuffix($image, $size, $path);
+			$file_url = asset($image.$qref);
+		}
+		else{
+			$image = self::fileSuffix($image, $size, $path);
+			$file_url = asset_cdn($image.$qref, $cdn_container);
+		}
+		
+		// if(!file_exists(public_path().'/'.$image)){
+		// 	$image = self::fileSuffix($default_image, 'not_found_'.$size, $default_path);
+		// }
+
+		// if(ping_remote_file($file_url) !== true){
+		// 	$file_url = self::fileSuffix($default_image, 'not_found_'.$size, $default_path);
+>>>>>>> 37ebd0ed8abd14921d39b5894f5d6f2812e5cff9
 		// 	$file_url = asset($file_url);
 		// }
 
 		return $file_url; 
 	}
+<<<<<<< HEAD
 
 	public static function assetCdn($file_url, $container=''){
 		$upload_url = \Config::get('sglv-core::image.upload_url');
@@ -69,4 +96,6 @@ class ImageUtil{
 		return trim($upload_url.'/'.trim($file_url,'/'), '/');
 	}
 
+=======
+>>>>>>> 37ebd0ed8abd14921d39b5894f5d6f2812e5cff9
 }
